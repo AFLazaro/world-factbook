@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs"); %>
+
+    <title>World Factbook - Search Results</title>
+</head>
+<body>
+    <%- include("partials/search.ejs"); %>
+
+    <div class="container mt-3">
+        <ul>
+            <% if(ccSearch){ %>
+                <form action="/results" method="POST">
+                    <input class="hidden" type="text" name="countryName" aria-hidden="true" value="<%= data.name %>">
+                    <button class="country-button float-start mx-2 my-2"><%= data.name %></button>
+                </form>
+            <% } %> 
+
+            <% for(let i = 0; i < data.length; i++){ %>
+                <form action="/results" method="POST">
+                    <input class="hidden" type="text" name="countryName" aria-hidden="true" value="<%= data[i].name %>">
+                    <input class="hidden" type="number" name="countryIndex" aria-hidden="true" value="<%= i %>">
+                    <button class="country-button float-start mx-2 my-2 text-dark"><%= data[i].name %></button>
+                </form>
+            <% } %>
+        </ul>
+    </div>
+
+    <%- include("partials/footer"); %> 
+</body>
+</html>

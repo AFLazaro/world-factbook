@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs"); %>
+    
+    <title>World Factbook | Results Not Found</title>
+</head>
+<body>
+    <%- include("partials/search.ejs"); %>
+
+    <div class="container d-flex flex-column align-items-center text-light mt-3">
+        <h2><%= errorCode %> - <%= errorText %></h2>
+    
+        <p>No results were found, please try your search again.</p>
+    </div>
+
+    <%- include("partials/footer"); %> 
+</body>
+</html>

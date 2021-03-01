@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs"); %>
+
+    <title>World Factbook</title>
+</head>
+<body>
+    <%- include("partials/search.ejs"); %>
+
+    <div class="container mt-3 text-light">
+        <ul class="list-group">Notes:
+            <li class="list-group-item">For language searches, <a class="homepage-link" href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 Language Codes</a> must be used.</li>
+            <li class="list-group-item">For currency searches, <a class="homepage-link" href="https://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> must be used.</li>
+        </ul>
+
+        <ul class="list-group mt-5 text-light">APIs Used:
+            <li class="list-group-item"><a class="homepage-link" href="https://rapidapi.com/apilayernet/api/rest-countries-v1">REST Countries v1 API</a></li>
+            <li class="list-group-item"><a class="homepage-link" href="https://www.countryflags.io/">Country Flags</a></li>
+            <li class="list-group-item"><a class="homepage-link" href="https://www.mapbox.com/">Mapbox</a></li>
+        </ul>
+
+        <p class="text-light mt-5">Icons from <a class="homepage-link" href="https://fontawesome.com/">Font Awesome</a>, click <a class="homepage-link" href="https://fontawesome.com/license">here</a> to see license. No changes were made to any images.</p>
+    </div>
+
+    <%- include("partials/footer"); %> 
+</body>
+</html>

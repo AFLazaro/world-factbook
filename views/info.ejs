@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs"); %>
+
+    <!-- Required for map --> 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+    <title>World Factbook - <%= displayData.name %></title>
+</head>
+<body>
+    <%- include("partials/search.ejs"); %>
+
+    <!-- Used for map coordinates -->
+    <p class="hidden lat" aria-hidden="true"><%= displayData.latlng[0]; %></p>
+    <p class="hidden long" aria-hidden="true"><%= displayData.latlng[1]; %></p>
+
+    <!-- Concatenates array data into a single string -->
+    <% function concat(arr){%>
+        <% let newArr = ""; %> 
+        <% for(let i = 0; i < arr.length; i++){ %> 
+            <% newArr += (arr[i]) %>
+            <% if(i < arr.length-1){ %>
+                <% newArr += ", " %> 
+            <% } %> 
+        <% } %>
+        <% return newArr; %>
+    <% } %> 
+
+    <div class="container d-flex flex-column align-items-center mt-4">
+        <div class="info-header d-flex align-items-center">
+            <img class="flag" src="https://www.countryflags.io/<%= displayData.alpha2Code %>/shiny/64.png" alt="Flag of <%= displayData.name %>"> <h2 class="info-title ms-2"><%= displayData.name %><%= displayData.name !== displayData.nativeName ? ` (${displayData.nativeName})` : "" %> </h2>
+        </div>
+
+        <div class="container text-light mt-3">
+            <ul class="list-group list-group-flush">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <!-- Map -->
+                        <div class="col" id='map'></div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <ul class="list-group-item">Alternate Names:
+                            <li class="list-group-item"><%= concat(displayData.altSpellings) %> </li>
+                        </ul>
+                        <ul class="list-group-item">Capital:
+                            <li class="list-group-item"><%= displayData.capital %> </li>
+                        </ul>
+                        <ul class="list-group-item">Region:
+                            <li class="list-group-item"><%= displayData.region %> (<%= displayData.subregion %>)</li>
+                        </ul>
+                        <ul class="list-group-item">Demonym:
+                            <li class="list-group-item"><%= displayData.demonym %> </li>
+                        </ul>
+                        <ul class="list-group-item">Official Languages:
+                            <li class="list-group-item"><%= concat(displayData.languages) %></li>
+                        </ul>
+                        <ul class="list-group-item">Coordinates:
+                            <li class="list-group-item">(<%= Math.round((displayData.latlng[0] + Number.EPSILON)*100)/100 %>, <%= Math.round((displayData.latlng[1] + Number.EPSILON)*100)/100 %>)</li>
+                        </ul>
+                        <ul class="list-group-item">Population:
+                            <li class="list-group-item"><%= displayData.population %> </li>
+                        </ul>
+                        <ul class="list-group-item">Area:
+                            <li class="list-group-item"><%= displayData.area %> km<sup>2</sup></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <ul class="list-group-item">Alpha Codes:
+                            <li class="list-group-item"><%= displayData.alpha2Code %>, <%= displayData.alpha3Code %></li>
+                        </ul>
+                        <ul class="list-group-item">Currencies:
+                            <li class="list-group-item"><%= concat(displayData.currencies) %></li>
+                        </ul>
+                        <ul class="list-group-item">Gini Coefficient:
+                            <li class="list-group-item"><%= displayData.gini %> </li>
+                        </ul>
+                        <ul class="list-group-item">Calling Codes:
+                            <li class="list-group-item"><%= concat(displayData.callingCodes) %></li>
+                        </ul>
+                        <ul class="list-group-item">Timezones:
+                            <li class="list-group-item"><%= concat(displayData.timezones) %> </li>
+                        </ul>
+                        <ul class="list-group-item">Top Level Domain:
+                            <li class="list-group-item"><%= displayData.topLevelDomain %></li>
+                        </ul>
+                        <ul class="list-group-item">Border Nations:
+                            <li class="list-group-item"><%= concat(displayData.borders) %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <%- include("partials/footer"); %> 
+    <script src="/js/map.js"></script>
+</body>
+</html>

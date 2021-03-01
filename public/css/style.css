@@ -1,0 +1,168 @@
+:root {
+    --very-dark-green: #013529;
+    --dark-green: #049372;   /* "Observatory" */
+    --light-green: #26C281;  /* "Jungle Green" */
+    --very-light-green: #c6f3e1;
+}
+
+html {
+    box-sizing: border-box;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 316px){
+    html {
+        font-size: 90%;
+    }
+}
+
+body {
+    background-color: var(--dark-green);
+}
+
+
+
+/*** HOMEPAGE ***/
+.homepage-link {
+    color: var(--very-light-green);
+    transition: color .2s ease;
+}
+
+.homepage-link:hover {
+    color: var(--light-green);
+    transition: color .2s ease;
+}
+
+
+
+/*** SEARCH ***/
+.hero, .hero:hover {
+    color: var(--very-dark-green);
+    text-decoration: none;
+}
+
+.search-header {
+    background-color: var(--light-green);
+}
+
+.input-group-text {
+    background-color: white;
+}
+
+.btn-dark {
+    background-color: var(--dark-green);
+}
+.btn-dark:hover {
+    background-color: var(--very-dark-green);
+}
+
+@media screen and (max-width: 575px){
+    .search-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-group > .form-control, .input-group > .form-select {
+        width: 100%;
+    }
+    
+    #searchCategory {
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: 0px;
+
+        margin-left: 0;
+    }
+
+    #searchInput {
+        margin-left: 0;
+    }
+
+    #searchButton {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 4px;
+
+        margin-left: 0;
+    }
+}
+
+
+
+/*** SEARCH RESULTS ***/
+.country-button {
+    color: var(--very-dark-green);
+    background-color: var(--light-green);
+    border: none;
+}
+
+
+
+/*** INFO PAGE ***/
+.info-header {
+    color: var(--very-light-green);
+}
+
+.list-group-item {
+    background-color: var(--dark-green);
+    border: none;
+}
+
+
+
+/*** MAP ***/
+#map {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+@media screen and (max-width: 576px){
+    #map {
+        margin: 0 auto;
+        width: 95%;
+    }
+}
+
+
+
+/*** FOOTER ***/
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 1.5rem;
+    width: 100%;
+
+    font-size: .8rem;
+    background-color: var(--light-green);
+    color: var(--very-dark-green);
+}
+
+.attribution-link {
+    font-size: 1rem;
+    margin-left: .5rem;
+    margin-top: -1px;
+
+    color: var(--very-dark-green);
+    transition: color .2s ease;
+}
+
+.attribution-link:hover {
+    color: var(--dark-green);
+    transition: color .2s ease;
+}
+
+
+
+/*** UTILITY CLASSES ***/
+.hidden {
+    display: none;
+}
+
+.text-light {
+    color: var(--very-light-green);
+}
+
+.text-dark {
+    color: var(--very-dark-green);
+}

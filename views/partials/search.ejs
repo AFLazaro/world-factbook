@@ -1,0 +1,17 @@
+<header class="search-header px-5 py-3 d-flex flex-column align-items-center">
+    <div class="mb-3">
+        <a class="hero" href="/"><h1><i class="fas fa-globe-americas"></i> World Factbook</h1></a>
+    </div>
+
+    <form class="searchForm" action="/" method="POST">
+        <div class="input-group mb-3 search-field">
+            <select class="form-select search-dropdown" name="searchCategory" id="searchCategory">
+                <% for(let category of searchCategories){ %>
+                    <option value="<%=category%>"><%=category%></option>
+                <% } %> 
+            </select>
+            <input class="input-group-text px-3" type="text" name="search" id="searchInput">
+            <button class="btn btn-dark" id="searchButton">Submit</button>
+        </div>
+    </form>
+</header>
